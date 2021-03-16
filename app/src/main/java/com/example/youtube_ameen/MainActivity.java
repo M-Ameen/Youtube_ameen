@@ -31,7 +31,7 @@ public class MainActivity extends YouTubeBaseActivity  {
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         edt1=findViewById(R.id.edt1);
         final String[] link = new String[1];
-
+//youtube video from user
         onInitializedListener=new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
