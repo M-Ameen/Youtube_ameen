@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -16,6 +17,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class MainActivity extends YouTubeBaseActivity  {
 
     private Button button;
+    EditText edt1;
     private static final int RECOVERY_REQUEST = 1;
     private YouTubePlayerView youTubeView;
     YouTubePlayer.OnInitializedListener onInitializedListener;
@@ -27,13 +29,13 @@ public class MainActivity extends YouTubeBaseActivity  {
 
         button=findViewById(R.id.btn);
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
-
-//        youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
+        edt1=findViewById(R.id.edt1);
+        final String[] link = new String[1];
 
         onInitializedListener=new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                youTubePlayer.loadVideo("nuZ_0pN8F-U");
+                youTubePlayer.loadVideo(link[0]);
             }
 
             @Override
@@ -44,6 +46,7 @@ public class MainActivity extends YouTubeBaseActivity  {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                link[0] = edt1.getText().toString();
                 youTubeView.initialize(Config.YOUTUBE_API_KEY,onInitializedListener);
             }
         });
